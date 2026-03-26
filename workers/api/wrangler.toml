@@ -1,0 +1,35 @@
+name = "picboost-api"
+main = "src/index.ts"
+compatibility_date = "2024-12-01"
+compatibility_flags = ["nodejs_compat"]
+
+# D1 Database
+[[d1_databases]]
+binding = "D1_DB"
+database_name = "picboost-db"
+database_id = "YOUR_D1_DATABASE_ID"
+
+# R2 Storage for images
+[[r2_buckets]]
+binding = "R2_BUCKET"
+bucket_name = "picboost-images"
+
+# Queue for async enhancement processing
+[[queues.producers]]
+binding = "QUEUE"
+queue = "picboost-enhance-queue"
+
+[[queues.consumers]]
+queue = "picboost-enhance-queue"
+max_batch_size = 1
+max_batch_timeout = 30
+max_retries = 3
+
+# Workers AI binding (Real-ESRGAN)
+[ai]
+binding = "AI"
+
+# Environment variables
+[vars]
+FREE_DAILY_LIMIT = "5"
+MAX_FILE_SIZE = "10485760" # 10MB

@@ -1,0 +1,56 @@
+# PicBoost - AI Image Enhancer
+
+> Free, no watermark, no sign-up AI image enhancement tool.
+
+## What is PicBoost?
+
+PicBoost is a free online AI image enhancement tool that lets you:
+- Enhance image quality (sharpening, noise reduction, color correction)
+- Upscale images to 2x or 4x resolution (up to 4K)
+- Fix blurry photos with AI deblurring
+- Remove backgrounds from images (Pro feature)
+
+## Key Features
+
+- **No watermark**: Enhanced images are clean, no logos or watermarks ever
+- **No sign-up required**: Use immediately without creating an account
+- **Free daily usage**: 5 free enhancements per day for unauthenticated users
+- **Fast processing**: Most images enhanced in 5-15 seconds
+- **Privacy focused**: Images are processed and can be deleted immediately
+
+## Pricing
+
+- **Free**: 5 images/day, 2x upscale, no watermark, no sign-up required
+- **Starter ($9.9/month)**: 50 images/day, 4x upscale, batch processing, all modes
+- **Pro ($19.9/month)**: Unlimited images, 8x upscale, API access, fastest speed
+
+## How to Use
+
+1. Go to https://picboost.com/enhance
+2. Drag and drop or click to upload an image (JPG, PNG, or WebP, max 10MB)
+3. Select enhancement mode (Enhance, Upscale, or Unblur)
+4. Click "Enhance Image"
+5. Preview the before/after comparison
+6. Download your enhanced image
+
+## Supported Formats
+
+- Input: JPG, PNG, WebP
+- Output: PNG, JPG
+- Maximum file size: 10MB
+- Maximum output resolution: Up to 8K (Pro plan)
+
+## Technology
+
+- AI Engine: Real-ESRGAN via Cloudflare Workers AI
+- Infrastructure: Cloudflare Pages, Workers, R2, D1, Queues
+- Global CDN: Cloudflare edge network for low latency worldwide
+
+## Links
+
+- Homepage: https://picboost.com
+- Image Enhancer: https://picboost.com/enhance
+- Image Upscaler: https://picboost.com/upscale
+- Unblur Photos: https://picboost.com/unblur
+- Pricing: https://picboost.com/pricing
+- Blog: https://picboost.com/blog

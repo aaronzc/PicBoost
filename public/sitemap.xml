@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://picboost.com/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://picboost.com/"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://picboost.com/zh"/>
+    <lastmod>2026-03-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://picboost.com/zh</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://picboost.com/"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://picboost.com/zh"/>
+    <lastmod>2026-03-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://picboost.com/enhance</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://picboost.com/enhance"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://picboost.com/zh/enhance"/>
+    <lastmod>2026-03-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://picboost.com/zh/enhance</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://picboost.com/enhance"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://picboost.com/zh/enhance"/>
+    <lastmod>2026-03-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://picboost.com/upscale</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://picboost.com/upscale"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://picboost.com/zh/upscale"/>
+    <lastmod>2026-03-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://picboost.com/zh/upscale</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://picboost.com/upscale"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://picboost.com/zh/upscale"/>
+    <lastmod>2026-03-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://picboost.com/unblur</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://picboost.com/unblur"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://picboost.com/zh/unblur"/>
+    <lastmod>2026-03-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://picboost.com/zh/unblur</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://picboost.com/unblur"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://picboost.com/zh/unblur"/>
+    <lastmod>2026-03-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://picboost.com/pricing</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://picboost.com/pricing"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://picboost.com/zh/pricing"/>
+    <lastmod>2026-03-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://picboost.com/zh/pricing</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://picboost.com/pricing"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://picboost.com/zh/pricing"/>
+    <lastmod>2026-03-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://picboost.com/blog</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://picboost.com/blog"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://picboost.com/zh/blog"/>
+    <lastmod>2026-03-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://picboost.com/zh/blog</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://picboost.com/blog"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://picboost.com/zh/blog"/>
+    <lastmod>2026-03-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+</urlset>
