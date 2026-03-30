@@ -57,7 +57,7 @@ export default {
       // Route: GET /api/jobs/:id — poll job status
       if (path.startsWith("/api/jobs/") && request.method === "GET") {
         const jobId = path.split("/api/jobs/")[1]
-        return await handleGetJob(jobId, env, CORS_HEADERS)
+        return await handleGetJob(jobId, request, env, CORS_HEADERS)
       }
 
       // Route: GET /api/quota — check daily quota
@@ -213,6 +213,7 @@ async function handleEnhance(
  */
 async function handleGetJob(
   jobId: string,
+  request: Request,
   env: Env,
   corsHeaders: Record<string, string>
 ): Promise<Response> {
@@ -221,6 +222,8 @@ async function handleGetJob(
   if (!job) {
     return jsonResponse({ error: "Job not found" }, 404, corsHeaders)
   }
+
+  const origin = new URL(request.url).origin
 
   const response: Record<string, unknown> = {
     id: job.id,
@@ -235,8 +238,8 @@ async function handleGetJob(
   }
 
   if (job.status === "completed" && job.enhanced_r2_key) {
-    response.enhancedUrl = `/api/download/${jobId}`
-    response.originalUrl = `/api/original/${jobId}`
+    response.enhancedUrl = `${origin}/api/download/${jobId}`
+    response.originalUrl = `${origin}/api/original/${jobId}`
   }
 
   return jsonResponse(response, 200, corsHeaders)
