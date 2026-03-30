@@ -7,7 +7,7 @@ compatibility_flags = ["nodejs_compat"]
 [[d1_databases]]
 binding = "D1_DB"
 database_name = "picboost-db"
-database_id = "YOUR_D1_DATABASE_ID"
+database_id = "f86b0896-6854-460b-a855-aacebaaeed1e"
 
 # R2 Storage for images
 [[r2_buckets]]

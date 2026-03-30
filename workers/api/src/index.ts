@@ -321,7 +321,29 @@ async function handleOriginal(
 }
 
 /**
+ * Enhancement prompts by mode
+ */
+const ENHANCE_PROMPTS: Record<string, { prompt: string; negative: string; strength: number }> = {
+  enhance: {
+    prompt: "enhanced, sharp, detailed, high quality, clear, vivid colors, professional photography",
+    negative: "blurry, noisy, low quality, artifacts, distorted, pixelated, overexposed, underexposed",
+    strength: 0.35,
+  },
+  upscale: {
+    prompt: "ultra sharp, high resolution, detailed textures, crisp edges, professional quality, 4K",
+    negative: "blurry, soft, noisy, artifacts, pixelated, low resolution, compression artifacts",
+    strength: 0.4,
+  },
+  unblur: {
+    prompt: "sharp focus, clear details, deblurred, crisp, high quality restoration",
+    negative: "blurry, motion blur, out of focus, soft, gaussian blur, noisy",
+    strength: 0.45,
+  },
+}
+
+/**
  * Process enhancement job (called by queue consumer)
+ * Uses Stable Diffusion img2img for image enhancement
  */
 async function processEnhanceJob(job: EnhanceJob, env: Env): Promise<void> {
   const { jobId, r2Key, mode, scale } = job
@@ -338,31 +360,34 @@ async function processEnhanceJob(job: EnhanceJob, env: Env): Promise<void> {
     const imageBuffer = await object.arrayBuffer()
     await updateJobStatus(jobId, "processing", 30, env)
 
-    // Select AI model based on scale
-    let modelId: string
-    if (scale === 4) {
-      // Real-ESRGAN 4x (run 2x twice for 4x effect, or use 4x model if available)
-      modelId = "@cf/real-esrgan/real-esrgan-2x"
-    } else {
-      modelId = "@cf/real-esrgan/real-esrgan-2x"
+    // Get enhancement prompt config
+    const promptConfig = ENHANCE_PROMPTS[mode] || ENHANCE_PROMPTS.enhance
+
+    // Run img2img enhancement
+    const aiInput = {
+      prompt: promptConfig.prompt,
+      negative_prompt: promptConfig.negative,
+      image: [...new Uint8Array(imageBuffer)],
+      strength: promptConfig.strength,
+      num_steps: 20,
     }
 
-    // Run AI enhancement
-    const aiInput = { image: [...new Uint8Array(imageBuffer)] }
-    let result: ArrayBuffer
+    await updateJobStatus(jobId, "processing", 50, env)
 
-    if (scale === 4) {
-      // For 4x: run 2x twice
-      const firstPass = await env.AI.run(modelId, aiInput)
-      const firstPassBuffer = firstPass instanceof ArrayBuffer ? firstPass : (firstPass as ReadableStream) ? await new Response(firstPass as ReadableStream).arrayBuffer() : new ArrayBuffer(0)
+    const aiResponse = await env.AI.run(
+      "@cf/runwayml/stable-diffusion-v1-5-img2img",
+      aiInput
+    )
 
-      await updateJobStatus(jobId, "processing", 60, env)
+    // Convert ReadableStream to ArrayBuffer
+    const result = aiResponse instanceof ArrayBuffer
+      ? aiResponse
+      : aiResponse instanceof ReadableStream
+        ? await new Response(aiResponse).arrayBuffer()
+        : new ArrayBuffer(0)
 
-      const secondPass = await env.AI.run(modelId, { image: [...new Uint8Array(firstPassBuffer)] })
-      result = secondPass instanceof ArrayBuffer ? secondPass : (secondPass as ReadableStream) ? await new Response(secondPass as ReadableStream).arrayBuffer() : new ArrayBuffer(0)
-    } else {
-      const aiResponse = await env.AI.run(modelId, aiInput)
-      result = aiResponse instanceof ArrayBuffer ? aiResponse : (aiResponse as ReadableStream) ? await new Response(aiResponse as ReadableStream).arrayBuffer() : new ArrayBuffer(0)
+    if (result.byteLength === 0) {
+      throw new Error("AI model returned empty response")
     }
 
     await updateJobStatus(jobId, "processing", 80, env)
